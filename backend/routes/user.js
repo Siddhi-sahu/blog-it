@@ -1,7 +1,8 @@
 import express from "express";
 import { z } from "zod";
 import jwt from "jsonwebtoken";
-import User from "../db";
+import { User } from "../db.js";
+import { JWT_SECRET } from "../config.js";
 
 const router = express.Router();
 
@@ -34,10 +35,25 @@ router.post("/signup", async (req, res) => {
   const user = await User.create(body);
 
   const userId = user._id;
+  const username = req.body.username;
 
   if (!userId) {
-    res.status(500).json({});
+    res.status(500).json({
+      message: "Something went wrong!",
+    });
   }
+
+  const payload = {
+    userId,
+    username,
+  };
+
+  const token = jwt.sign(payload, JWT_SECRET);
+
+  res.status(200).json({
+    message: "user created successfully",
+    token: token,
+  });
 });
 
-module.exports = router;
+export { router };
