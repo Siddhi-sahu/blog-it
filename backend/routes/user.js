@@ -1,5 +1,7 @@
 import express from "express";
 import { z } from "zod";
+import jwt from "jsonwebtoken";
+import User from "../db";
 
 const router = express.Router();
 
@@ -10,7 +12,7 @@ const signupSchema = z.object({
   password: z.string().min(6),
 });
 
-router.post("/signup", (req, res) => {
+router.post("/signup", async (req, res) => {
   const body = req.body;
   //directly accessing success property from the object returned by signupSchema.safeParse(body);(remove)
   const { success } = signupSchema.safeParse(body);
@@ -19,6 +21,22 @@ router.post("/signup", (req, res) => {
     res.status(400).json({
       message: "Invalid Inputs",
     });
+  }
+
+  const existingUser = await User.findOne(body);
+
+  if (existingUser) {
+    res.status(409).json({
+      message: "user already exists",
+    });
+  }
+
+  const user = await User.create(body);
+
+  const userId = user._id;
+
+  if (!userId) {
+    res.status(500).json({});
   }
 });
 

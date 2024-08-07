@@ -1,9 +1,9 @@
-## allow user to signup/signin
+- allow user to signup/signin
 
-## allow user to create/post a blog
+- allow user to create/post a blog
 
-## allow user to edit/update a blog post
+- allow user to edit/update a blog post
 
-## mongoose model
+- send appropriate status codes and messages when something goes wrong
 
-- user,
+- mongoose model(user)
