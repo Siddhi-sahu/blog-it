@@ -24,7 +24,9 @@ router.post("/signup", async (req, res) => {
     });
   }
 
-  const existingUser = await User.findOne(body);
+  const existingUser = await User.findOne({
+    username: req.body.username,
+  });
 
   if (existingUser) {
     res.status(409).json({
@@ -54,6 +56,55 @@ router.post("/signup", async (req, res) => {
     message: "user created successfully",
     token: token,
   });
+});
+
+const signinSchema = z.object({
+  username: z.string().email(),
+  password: z.string().min(6),
+});
+
+router.post("/signin", async (req, res) => {
+  try {
+    const body = req.body;
+
+    const { success } = signinSchema.safeParse(body);
+
+    if (!success) {
+      res.status(400).json({
+        message: "Incorrect inputs",
+      });
+    }
+
+    const user = await User.findOne({
+      username: req.body.username,
+      password: req.body.password,
+    });
+
+    if (!user) {
+      res.status(404).json({
+        message: "No user found. Sign up to continue!",
+      });
+    }
+
+    const userId = user._id;
+    const username = user.username;
+
+    const payload = {
+      userId,
+      username,
+    };
+    const token = jwt.sign(payload, JWT_SECRET);
+
+    res.status(200).json({
+      msg: "signed in successfully",
+      token: token,
+    });
+  } catch (error) {
+    console.log("error:  ", error);
+    res.json({
+      msg: "error",
+    });
+  }
 });
 
 export { router };
