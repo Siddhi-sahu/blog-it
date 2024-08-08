@@ -3,6 +3,7 @@ import { z } from "zod";
 import jwt from "jsonwebtoken";
 import { User } from "../db.js";
 import { JWT_SECRET } from "../config.js";
+import { authMiddleWare } from "../middleware.js";
 
 const router = express.Router();
 
@@ -105,6 +106,42 @@ router.post("/signin", async (req, res) => {
       msg: "error",
     });
   }
+});
+
+const updateSchema = z.object({
+  password: z.string().min(6).optional(),
+  firstName: z.string().max(30).optional(),
+  lastName: z.string().max(30).optional(),
+});
+
+router.put("/update", authMiddleWare, async (req, res) => {
+  const body = req.body;
+  const userId = req.userId;
+  const { success } = updateSchema.safeParse(body);
+
+  if (!success) {
+    return res.status(400).json({
+      message: "incorrect inputs",
+    });
+  }
+  // console.log("Request body:", body);
+
+  const user = await User.findOne({ _id: userId });
+
+  if (!user) {
+    return res.json({
+      message: "something went wrong",
+    });
+  }
+
+  //$set
+
+  await User.updateOne({ _id: userId }, { $set: body });
+  // console.log("Request body:", body);
+
+  return res.status(200).json({
+    message: "Updated successfully",
+  });
 });
 
 export { router };
