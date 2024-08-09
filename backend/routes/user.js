@@ -161,6 +161,8 @@ const blogBody = z.object({
 });
 
 router.post("/createblog", authMiddleWare, async (req, res) => {
+  // const username = req.username;
+  const userId = req.userId;
   const { success } = blogBody.safeParse(req.body);
   if (!success) {
     return res.status(400).json({
@@ -168,15 +170,23 @@ router.post("/createblog", authMiddleWare, async (req, res) => {
     });
   }
 
-  await Blog.create({
+  const blog = await Blog.create({
     title: req.body.title,
     blog: req.body.blog,
+    author: userId,
+  });
+
+  await User.findByIdAndUpdate(userId, {
+    $push: {
+      blogs: blog._id,
+    },
   });
 
   res.status(200).json({
     message: "blog uploaded successfully",
   });
 });
+
 router.use(function (err, req, res, next) {
   res.json({
     msg: err,
