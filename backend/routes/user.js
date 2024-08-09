@@ -1,7 +1,7 @@
 import express from "express";
 import { z } from "zod";
 import jwt from "jsonwebtoken";
-import { User } from "../db.js";
+import { Blog, User } from "../db.js";
 import { JWT_SECRET } from "../config.js";
 import { authMiddleWare } from "../middleware.js";
 
@@ -151,6 +151,35 @@ router.get("/bulk", authMiddleWare, async (req, res) => {
 
   res.status(200).json({
     users: users,
+  });
+});
+
+const blogBody = z.object({
+  title: z.string().max(200),
+  blog: z.string().max(6000),
+  // author: z.string(),
+});
+
+router.post("/createblog", authMiddleWare, async (req, res) => {
+  const { success } = blogBody.safeParse(req.body);
+  if (!success) {
+    return res.status(400).json({
+      message: "Invalid inputs/character limit execeded",
+    });
+  }
+
+  await Blog.create({
+    title: req.body.title,
+    blog: req.body.blog,
+  });
+
+  res.status(200).json({
+    message: "blog uploaded successfully",
+  });
+});
+router.use(function (err, req, res, next) {
+  res.json({
+    msg: err,
   });
 });
 

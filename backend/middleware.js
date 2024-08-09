@@ -17,7 +17,7 @@ export function authMiddleWare(req, res, next) {
     req.username = decoded.username;
     next();
   } catch (error) {
-    console.log("error: " + error);
+    console.log("error from authentication: " + error);
     res.status(411).json({
       message: "Invalid token",
     });
