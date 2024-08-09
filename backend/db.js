@@ -31,6 +31,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 6,
   },
+  blogs: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Blog",
+    },
+  ],
 });
 
 const blogSchema = new Schema({
@@ -41,15 +47,23 @@ const blogSchema = new Schema({
     trim: true,
     maxlength: 200,
   },
-  body: {
+  blog: {
     type: String,
     required: true,
     trim: true,
-    maxlength: 7000,
+    maxlength: 6000,
   },
-  author: {},
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const User = mongoose.model("User", userSchema);
+const Blog = mongoose.model("Blog", blogSchema);
 
-export { User };
+export { User, Blog };
