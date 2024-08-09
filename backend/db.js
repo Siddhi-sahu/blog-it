@@ -33,6 +33,23 @@ const userSchema = new Schema({
   },
 });
 
+const blogSchema = new Schema({
+  // date
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+    maxlength: 200,
+  },
+  body: {
+    type: String,
+    required: true,
+    trim: true,
+    maxlength: 7000,
+  },
+  author: {},
+});
+
 const User = mongoose.model("User", userSchema);
 
 export { User };

@@ -144,4 +144,14 @@ router.put("/update", authMiddleWare, async (req, res) => {
   });
 });
 
+//need to work on it more
+
+router.get("/bulk", authMiddleWare, async (req, res) => {
+  const users = await User.find({});
+
+  res.status(200).json({
+    users: users,
+  });
+});
+
 export { router };
