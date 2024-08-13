@@ -54,6 +54,7 @@ const Signup = () => {
               localStorage.setItem("token", response.data.token);
               navigate("/dashboard");
             } catch (err) {
+              navigate("/signup");
               console.log(err);
             }
           }}
