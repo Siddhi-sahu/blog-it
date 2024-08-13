@@ -7,6 +7,16 @@ import { authMiddleWare } from "../middleware.js";
 
 const router = express.Router();
 
+router.get("/dashboard", authMiddleWare, (req, res) => {
+  try {
+    res.status(200).json({
+      msg: "Welcome to the dashboard",
+    });
+  } catch (err) {
+    console.log("Error in route handler: ", err);
+  }
+});
+
 const signupSchema = z.object({
   username: z.string().email(),
   firstName: z.string().max(30),

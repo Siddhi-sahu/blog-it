@@ -18,4 +18,4 @@
 
 - user can create post and (update post?)
 
-- data association
+- data association/ and hash passwords
