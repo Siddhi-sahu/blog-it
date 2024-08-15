@@ -13,12 +13,16 @@ const Sidebar = () => {
         <div className="flex flex-col justify-between h-full">
           <div className=" flex flex-col justify-center items-center gap-10 mt-10">
             <DashboardLinks icon={homeIcon} label={"Home"} to={"/dashboard"} />
-            <DashboardLinks icon={newIcon} label={"New Blog"} to={""} />
+            <DashboardLinks icon={newIcon} label={"Explore"} to={"/explore"} />
             <DashboardLinks icon={searchIcon} label={"Search"} to={""} />
             <DashboardLinks icon={profileIcon} label={"Profile"} to={""} />
           </div>
           <div>
-            <img src={SidebarIcon} alt="" />
+            <img
+              src={SidebarIcon}
+              alt=""
+              className="transform transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg"
+            />
           </div>
         </div>
       </div>
