@@ -2,18 +2,20 @@ import React from "react";
 import SidebarIcon from "../assets/sidebar.svg";
 import DashboardLinks from "./DashboardLinks";
 import homeIcon from "../assets/home.svg";
+import searchIcon from "../assets/search.svg";
+import newIcon from "../assets/new.svg";
+import profileIcon from "../assets/profile.svg";
 
 const Sidebar = () => {
   return (
     <>
-      <div className="col-span-1 md:col-span-2 bg-pink-900 text-white p-4 font-mono ">
-        {/* <h2 className="text-lg md:text-xl font-semibold">Sidebar</h2> */}
+      <div className="col-span-1 md:col-span-2 bg-pink-900 text-white font-bold p-4 font-mono ">
         <div className="flex flex-col justify-between h-full">
           <div className=" flex flex-col justify-center items-center gap-10 mt-10">
             <DashboardLinks icon={homeIcon} label={"Home"} to={"/dashboard"} />
-            <DashboardLinks />
-            <DashboardLinks />
-            <DashboardLinks />
+            <DashboardLinks icon={newIcon} label={"New Blog"} to={""} />
+            <DashboardLinks icon={searchIcon} label={"Search"} to={""} />
+            <DashboardLinks icon={profileIcon} label={"Profile"} to={""} />
           </div>
           <div>
             <img src={SidebarIcon} alt="" />
