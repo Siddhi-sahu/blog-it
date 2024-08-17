@@ -7,6 +7,7 @@ import Signin from "./pages/Signin";
 import Dashboard from "./pages/Dashboard";
 import Redirect from "./pages/Redirect";
 import Explore from "./pages/Explore";
+import GatedRoutes from "./pages/GatedRoutes";
 
 function App() {
   return (
@@ -15,9 +16,23 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <GatedRoutes>
+                <Dashboard />
+              </GatedRoutes>
+            }
+          />
           <Route path="/" element={<Redirect />} />
-          <Route path="/explore" element={<Explore />} />
+          <Route
+            path="/explore"
+            element={
+              <GatedRoutes>
+                <Explore />
+              </GatedRoutes>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>
