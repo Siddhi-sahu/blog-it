@@ -164,4 +164,12 @@ router.get("/bulk", authMiddleWare, async (req, res) => {
   });
 });
 
+//logout route
+
+router.post("/logout", (req, res) => {
+  res.status(200).json({
+    message: "logout success",
+  });
+});
+
 export { router };

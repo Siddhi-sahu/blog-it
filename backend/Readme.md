@@ -19,3 +19,5 @@
 - user can create post and (update post?)
 
 - data association/ and hash passwords
+
+- fix wrong inputs backend crash on signup and signin
