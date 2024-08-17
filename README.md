@@ -14,7 +14,7 @@ BlogIt is a full-stack blogging platform . It features a user-friendly interface
  -  React, Tailwind CSS 
  •	Backend: Node.js, Express.js
  •	Database: MongoDB
- •	•	Authentication:  JWT (JSON Web Tokens)
+ •	Authentication:  JWT (JSON Web Tokens)
 
  ##Backend
 1.	Express - HTTP Server
