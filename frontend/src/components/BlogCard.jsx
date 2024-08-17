@@ -15,8 +15,8 @@ const BlogCard = ({ author, title, overview }) => {
         <h2 className="text-xl font-bold mb-2">{title}</h2>
         <p className="text-gray-600">{overview}</p>
       </div>
-      <div className="bg-gray-100 p-4">
-        <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+      <div className="bg-pink-100 p-4">
+        <button className="bg-pink-500 text-white py-2 px-4 rounded hover:bg-pink-600">
           Read More
         </button>
       </div>
