@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Redirect from "./pages/Redirect";
 import Explore from "./pages/Explore";
 import GatedRoutes from "./pages/GatedRoutes";
+import NewBlog from "./pages/NewBlog";
 
 function App() {
   return (
@@ -30,6 +31,14 @@ function App() {
             element={
               <GatedRoutes>
                 <Explore />
+              </GatedRoutes>
+            }
+          />
+          <Route
+            path="/create"
+            element={
+              <GatedRoutes>
+                <NewBlog />
               </GatedRoutes>
             }
           />

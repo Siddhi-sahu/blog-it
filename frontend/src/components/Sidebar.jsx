@@ -5,6 +5,7 @@ import homeIcon from "../assets/home.svg";
 import searchIcon from "../assets/search.svg";
 import newIcon from "../assets/new.svg";
 import profileIcon from "../assets/profile.svg";
+import exploreIcon from "../assets/explore.svg";
 
 const Sidebar = () => {
   return (
@@ -13,7 +14,12 @@ const Sidebar = () => {
         <div className="flex flex-col justify-between h-full">
           <div className=" flex flex-col justify-center items-center gap-10 mt-10">
             <DashboardLinks icon={homeIcon} label={"Home"} to={"/dashboard"} />
-            <DashboardLinks icon={newIcon} label={"Explore"} to={"/explore"} />
+            <DashboardLinks icon={newIcon} label={"New Blog"} to={"/create"} />
+            <DashboardLinks
+              icon={exploreIcon}
+              label={"Explore"}
+              to={"/explore"}
+            />
             <DashboardLinks icon={searchIcon} label={"Search"} to={""} />
             <DashboardLinks icon={profileIcon} label={"Profile"} to={""} />
           </div>
