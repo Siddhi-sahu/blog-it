@@ -45,8 +45,14 @@ const blogSchema = new Schema({
     type: String,
     required: true,
     trim: true,
-    maxlength: 200,
+    maxlength: 50,
   },
+  // description: {
+  //   type: String,
+  //   required: true,
+  //   trim: true,
+  //   maxlength: 200,
+  // },
   blog: {
     type: String,
     required: true,
