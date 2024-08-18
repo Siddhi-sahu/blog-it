@@ -1,45 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
+import { fetchBlogs } from "../services/fetchBlogs";
 
 const BlogsSection = () => {
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const fetchdata = async () => {
+      try {
+        const data = await fetchBlogs();
+        setBlogs(data.blogs);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchdata();
+  }, []);
+
+  if (loading) return <div>loading...</div>;
+  if (error)
+    return <div> Failed to load blogs, please try again later: {error}</div>;
   return (
     <div className="p-6 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {/* <div className="p-6 grid gap-6 grid-cols-1"> */}
-      <BlogCard
-        author="John Doe"
-        title="How to Create a Responsive Layout"
-        overview="Learn the best practices for creating responsive layouts in web design."
-      />
-      <BlogCard
-        author="Jane Smith"
-        title="Understanding React Hooks"
-        overview="A comprehensive guide to using hooks in React for better state management."
-      />
-      <BlogCard
-        author="Alice Johnson"
-        title="CSS Grid vs Flexbox"
-        overview="Explore the differences between CSS Grid and Flexbox and when to use each."
-      />
-      <BlogCard
-        author="John Doe"
-        title="How to Create a Responsive Layout"
-        overview="Learn the best practices for creating responsive layouts in web design."
-      />
-      <BlogCard
-        author="Jane Smith"
-        title="Understanding React Hooks"
-        overview="A comprehensive guide to using hooks in React for better state management."
-      />
-      <BlogCard
-        author="Alice Johnson"
-        title="CSS Grid vs Flexbox"
-        overview="Explore the differences between CSS Grid and Flexbox and when to use each."
-      />
-      <BlogCard
-        author="Alice Johnson"
-        title="CSS Grid vs Flexbox"
-        overview="Explore the differences between CSS Grid and Flexbox and when to use each."
-      />
+      {blogs.map((blog) => (
+        <BlogCard
+          title={blog.title}
+          author={blog.author}
+          overview={blog.blog.substring(0, 70)}
+        />
+      ))}
     </div>
   );
 };

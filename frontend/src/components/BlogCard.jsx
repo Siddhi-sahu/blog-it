@@ -1,4 +1,5 @@
 import React from "react";
+import profileIcon from "../assets/profile.svg";
 
 const BlogCard = ({ author, title, overview }) => {
   return (
@@ -6,9 +7,9 @@ const BlogCard = ({ author, title, overview }) => {
       <div className="p-4">
         <div className="flex items-center mb-4">
           <img
-            src="https://via.placeholder.com/40"
+            src={profileIcon}
             alt="Author"
-            className="w-10 h-10 rounded-full mr-4"
+            className="w-10 h-10 rounded-full mr-4 bg-gray-600"
           />
           <h3 className="text-lg font-semibold">{author}</h3>
         </div>

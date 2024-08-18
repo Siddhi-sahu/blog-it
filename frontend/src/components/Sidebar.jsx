@@ -1,5 +1,5 @@
 import React from "react";
-import SidebarIcon from "../assets/sidebar.svg";
+// import SidebarIcon from "../assets/sidebar.svg";
 import DashboardLinks from "./DashboardLinks";
 import homeIcon from "../assets/home.svg";
 import searchIcon from "../assets/search.svg";
