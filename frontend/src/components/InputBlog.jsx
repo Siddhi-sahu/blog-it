@@ -4,9 +4,16 @@ import axios from "axios";
 const InputBlog = () => {
   const [title, setTitle] = useState("");
   const [blog, setBlog] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (title.trim() === "" || blog.trim() === "") {
+      setError("Title and Blog content are required.");
+      return;
+    }
 
     try {
       const token = localStorage.getItem("token");
@@ -22,18 +29,24 @@ const InputBlog = () => {
           },
         }
       );
+
+      setSuccess(true);
+      setError("");
     } catch (err) {
       console.log(err);
-      setError(true);
+      setError("Something went wrong. Please try again later.");
     }
   };
 
-  if (error) {
-    return <div>Error. Please try again later</div>;
+  if (success) {
+    return <div>Blog posted Successfully.</div>;
   }
+
   return (
     <form action="/createblog" method="POST" onSubmit={handleSubmit}>
       <div className="flex justify-center items-center flex-col p-4 max-w-lg mx-auto lg:max-w-3xl 2xl:max-w-6xl">
+        {/* if there is a value of error has a value/error is true  */}
+        {error && <div className="text-red-500 mb-4">{error}</div>}
         <input
           onChange={(e) => {
             setTitle(e.target.value);
