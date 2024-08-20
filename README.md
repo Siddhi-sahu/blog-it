@@ -13,7 +13,7 @@ BlogIt is a full-stack blogging platform . It features a user-friendly interface
 
 ## Technologies
 
-## FRONTEND :
+## Frontend
 
 - React, Tailwind CSS
   • Backend: Node.js, Express.js

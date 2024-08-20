@@ -3,7 +3,7 @@ import axios from "axios";
 
 const InputBlog = () => {
   const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+  const [blog, setBlog] = useState("");
   const [error, setError] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,7 +14,7 @@ const InputBlog = () => {
         "http://localhost:3000/api/v1/blog/createblog",
         {
           title,
-          body,
+          blog,
         },
         {
           headers: {
@@ -44,7 +44,7 @@ const InputBlog = () => {
         />
         <textarea
           onChange={(e) => {
-            setBody(e.target.body);
+            setBlog(e.target.value);
           }}
           placeholder=" Blog Content(5000 characters)"
           className="w-full p-3 mb-4 h-96  rounded-lg resize-none transform transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:bg-pink-200"
