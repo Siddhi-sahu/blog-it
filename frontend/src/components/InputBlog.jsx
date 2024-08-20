@@ -4,10 +4,33 @@ import axios from "axios";
 const InputBlog = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [error, setError] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post();
+
+    try {
+      const token = localStorage.getItem("token");
+      await axios.post(
+        "http://localhost:3000/api/v1/blog/createblog",
+        {
+          title,
+          body,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (err) {
+      console.log(err);
+      setError(true);
+    }
   };
+
+  if (error) {
+    return <div>Error. Please try again later</div>;
+  }
   return (
     <form action="/createblog" method="POST" onSubmit={handleSubmit}>
       <div className="flex justify-center items-center flex-col p-4 max-w-lg mx-auto lg:max-w-3xl 2xl:max-w-6xl">

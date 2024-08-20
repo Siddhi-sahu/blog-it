@@ -4,3 +4,5 @@
 - fix responsiveness in md length(explore page)
 
 - hide db url
+
+- design a loading and error page to be rerndered
