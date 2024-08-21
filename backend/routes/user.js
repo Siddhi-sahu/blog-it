@@ -164,6 +164,28 @@ router.get("/bulk", authMiddleWare, async (req, res) => {
   });
 });
 
+//users blogs
+
+router.get("/userBlogs", authMiddleWare, async (req, res) => {
+  try {
+    const userId = req.userId;
+    const user = await User.findById(userId).populate("blogs");
+
+    if (!user) {
+      return res.status(404).json({
+        msg: "User not found",
+      });
+    }
+
+    res.status(200).json({
+      blogs: user.blogs,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to fetch user blogs" });
+  }
+});
+
 //logout route
 
 router.post("/logout", (req, res) => {

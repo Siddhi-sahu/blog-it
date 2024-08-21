@@ -20,7 +20,7 @@ const BlogsSection = () => {
     };
 
     fetchdata();
-  }, []);
+  }, [data]);
 
   if (loading) return <div>loading...</div>;
   if (error)
@@ -31,9 +31,9 @@ const BlogsSection = () => {
       {blogs.map((blog) => (
         <BlogCard
           key={blog._id}
-          title={blog.title}
+          title={blog.title.toUpperCase()}
           author={blog.author}
-          overview={blog.blog.substring(0, 150) + "......read more"}
+          overview={blog.blog.substring(0, 150) + "   ......read more"}
         />
       ))}
     </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import BlogsSection from "../components/BlogsSection";
+// import BlogsSection from "../components/BlogsSection";
+import UserBlogs from "../components/blog/UserBlogs";
 
 const Dashboard = () => {
   return (
@@ -11,6 +12,8 @@ const Dashboard = () => {
 
         <div className="col-span-4 md:col-span-10 bg-gray-100 p-6 overflow-y-auto">
           <Navbar />
+          {/* users cards */}
+          <UserBlogs />
         </div>
       </div>
     </>

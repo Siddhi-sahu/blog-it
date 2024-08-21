@@ -40,19 +40,11 @@ router.post("/createblog", authMiddleWare, async (req, res) => {
   });
 });
 
-// router.get("/bulk/blogs", authMiddleWare, async (req, res) => {
-//   const blogs = await Blog.find();
-
-//   res.status(200).send({
-//     blogs: blogs,
-//   });
-// });
-
 router.get("/bulk/blogs", authMiddleWare, async (req, res) => {
   try {
     const blogs = await Blog.find().populate({
       path: "author",
-      select: "firstName lastName", // Select the fields you want from the User model
+      select: "firstName lastName",
     });
 
     res.status(200).send({

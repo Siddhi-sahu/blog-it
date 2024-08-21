@@ -11,12 +11,12 @@ const BlogCard = ({ author, title, overview }) => {
             alt="Author"
             className="w-10 h-10 rounded-full mr-4 bg-gray-600"
           />
-          <h3 className="text-lg font-semibold">
+          <h3 className="text-lg font-semibold font-serif">
             {author ? author.name : "Unknown Author"}
           </h3>
         </div>
-        <h2 className="text-xl font-bold mb-2">{title}</h2>
-        <p className="text-gray-600">{overview}</p>
+        <h2 className="text-xl font-bold mb-2 ">{title}</h2>
+        <p className="text-gray-600 ">{overview}</p>
       </div>
       <div className="bg-pink-300 p-4 mt-auto flex">
         <button className="bg-pink-600 text-white py-2 px-4 rounded hover:bg-pink-700 ">

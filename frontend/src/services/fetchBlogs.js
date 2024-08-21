@@ -12,7 +12,7 @@ export const fetchBlogs = async () => {
     };
 
     const response = await axios.get(BLOG_URL, header);
-    console.log(response.data.blogs);
+    // console.log(response.data.blogs);
 
     return response.data;
   } catch (err) {
