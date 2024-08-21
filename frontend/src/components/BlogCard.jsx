@@ -11,7 +11,9 @@ const BlogCard = ({ author, title, overview }) => {
             alt="Author"
             className="w-10 h-10 rounded-full mr-4 bg-gray-600"
           />
-          <h3 className="text-lg font-semibold">{author}</h3>
+          <h3 className="text-lg font-semibold">
+            {author ? author.name : "Unknown Author"}
+          </h3>
         </div>
         <h2 className="text-xl font-bold mb-2">{title}</h2>
         <p className="text-gray-600">{overview}</p>

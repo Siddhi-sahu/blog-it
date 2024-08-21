@@ -44,9 +44,11 @@ const InputBlog = () => {
 
   return (
     <form action="/createblog" method="POST" onSubmit={handleSubmit}>
-      <div className="flex justify-center items-center flex-col p-4 max-w-lg mx-auto lg:max-w-3xl 2xl:max-w-6xl">
+      <div className="flex justify-center items-center flex-col p-4 max-w-lg mx-auto lg:max-w-3xl 2xl:max-w-6xl font-mono">
         {/* if there is a value of error has a value/error is true  */}
-        {error && <div className="text-red-500 mb-4">{error}</div>}
+        {error && (
+          <div className="text-red-500 font-semibold  mb-4">{error}</div>
+        )}
         <input
           onChange={(e) => {
             setTitle(e.target.value);

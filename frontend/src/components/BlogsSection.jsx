@@ -30,6 +30,7 @@ const BlogsSection = () => {
       {/* <div className="p-6 grid gap-6 grid-cols-1"> */}
       {blogs.map((blog) => (
         <BlogCard
+          key={blog._id}
           title={blog.title}
           author={blog.author}
           overview={blog.blog.substring(0, 70)}

@@ -40,12 +40,33 @@ router.post("/createblog", authMiddleWare, async (req, res) => {
   });
 });
 
-router.get("/bulk/blogs", authMiddleWare, async (req, res) => {
-  const blogs = await Blog.find();
+// router.get("/bulk/blogs", authMiddleWare, async (req, res) => {
+//   const blogs = await Blog.find();
 
-  res.status(200).send({
-    blogs: blogs,
-  });
+//   res.status(200).send({
+//     blogs: blogs,
+//   });
+// });
+
+router.get("/bulk/blogs", authMiddleWare, async (req, res) => {
+  try {
+    const blogs = await Blog.find().populate({
+      path: "author",
+      select: "firstName lastName", // Select the fields you want from the User model
+    });
+
+    res.status(200).send({
+      blogs: blogs.map((blog) => ({
+        ...blog.toObject(),
+        author: {
+          name: `${blog.author.firstName} ${blog.author.lastName}`,
+        },
+      })),
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ message: "Failed to fetch blogs" });
+  }
 });
 
 const updateBlogSchema = z.object({
