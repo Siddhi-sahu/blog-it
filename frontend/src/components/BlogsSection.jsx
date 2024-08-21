@@ -26,14 +26,14 @@ const BlogsSection = () => {
   if (error)
     return <div> Failed to load blogs, please try again later: {error}</div>;
   return (
-    <div className="p-6 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="p-6 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
       {/* <div className="p-6 grid gap-6 grid-cols-1"> */}
       {blogs.map((blog) => (
         <BlogCard
           key={blog._id}
           title={blog.title}
           author={blog.author}
-          overview={blog.blog.substring(0, 70)}
+          overview={blog.blog.substring(0, 150) + "......read more"}
         />
       ))}
     </div>
