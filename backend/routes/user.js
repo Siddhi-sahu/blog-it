@@ -118,6 +118,8 @@ router.post("/signin", async (req, res) => {
   }
 });
 
+//editing users info
+
 const updateSchema = z.object({
   password: z.string().min(6).optional(),
   firstName: z.string().max(30).optional(),

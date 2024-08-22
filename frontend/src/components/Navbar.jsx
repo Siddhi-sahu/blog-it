@@ -14,15 +14,15 @@ const Navbar = () => {
     }
   };
   return (
-    <div className="flex justify-between items-center bg-pink-300 p-4 md:p-5 shadow-md rounded-lg transform transition-transform duration-200 ease-in-out hover:scale-100 hover:shadow-lg">
+    <div className="flex justify-between items-center bg-pink-300  p-4 md:p-5 shadow-md rounded-lg transform transition-transform duration-200 ease-in-out hover:scale-100 hover:shadow-lg">
       <div className="flex items-center space-x-2">
         <div className="bg-pink-500 text-white rounded-full p-2 hidden md:block transform transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg ">
           <img src={BlogIcon} alt="Blog" className="w-6 h-6 md:w-8 md:h-8" />
         </div>
 
         <a href="/" className="text-2xl font-bold ">
-          <span className="text-pink-600 font-mono text-xl">Blog</span>
-          <span className="text-pink-900 font-mono text-xl">it</span>
+          <span className="text-pink-600 font-mono text-2xl">Blog</span>
+          <span className="text-pink-900 font-mono text-2xl">it</span>
         </a>
       </div>
 

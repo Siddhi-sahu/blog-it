@@ -41,13 +41,16 @@ const UserBlogs = () => {
 
   return (
     <div className="">
+      {/* users blogs these are different from the bulk blogs */}
       {blogs.map((blog) => {
+        // console.log("Rendering blog:", blog);
         return (
           <UserBlogCard
             title={blog.title}
             blog={blog.blog}
             onEdit={() => handleEdit(blog._id)}
             onDelete={() => handleDelete(blog._id)}
+            key={blog._id}
           />
         );
       })}

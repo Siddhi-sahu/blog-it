@@ -17,7 +17,7 @@ export const fetchUserBlogs = async () => {
     };
 
     const response = await axios.get(userBlogs_URL, header);
-    console.log(response.data.blogs);
+    // console.log(response.data.blogs);
 
     return response.data;
   } catch (err) {

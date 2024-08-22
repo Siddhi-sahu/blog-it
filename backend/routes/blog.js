@@ -61,6 +61,8 @@ router.get("/bulk/blogs", authMiddleWare, async (req, res) => {
   }
 });
 
+//editing user blogs
+
 const updateBlogSchema = z.object({
   title: z.string().max(200).optional(),
   blog: z.string().max(6000).optional(),
