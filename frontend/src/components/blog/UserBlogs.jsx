@@ -10,20 +10,28 @@ const UserBlogs = () => {
   //handle errors from here
 
   useEffect(() => {
-    try {
-      const fetchUserData = async () => {
+    const fetchUserData = async () => {
+      try {
         const data = await fetchUserBlogs();
 
         setBlogs(data.blogs);
-      };
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
     fetchUserData();
-  }, [data]);
+  }, []);
+
+  const handleEdit = (blogId) => {
+    console.log("edit blog with id : ", blogId);
+  };
+
+  const handleDelete = (blogId) => {
+    console.log("delete blog with id", blogId);
+  };
 
   if (loading) return <div>loading...</div>;
 
@@ -38,8 +46,8 @@ const UserBlogs = () => {
           <UserBlogCard
             title={blog.title}
             blog={blog.blog}
-            onEdit={() => handleEdit}
-            onDelete={() => handleDelete}
+            onEdit={() => handleEdit(blog._id)}
+            onDelete={() => handleDelete(blog._id)}
           />
         );
       })}

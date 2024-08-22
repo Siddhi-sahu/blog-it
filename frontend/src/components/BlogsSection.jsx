@@ -20,7 +20,7 @@ const BlogsSection = () => {
     };
 
     fetchdata();
-  }, [data]);
+  }, []);
 
   if (loading) return <div>loading...</div>;
   if (error)

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const userBlogs_URL = "http://localhost:3000/api/v1/user/userBlogs";
 
-export const fetchUserBlogs = () => {
+export const fetchUserBlogs = async () => {
   try {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -16,7 +16,7 @@ export const fetchUserBlogs = () => {
       },
     };
 
-    const response = axios.get(userBlogs_URL, header);
+    const response = await axios.get(userBlogs_URL, header);
     console.log(response.data.blogs);
 
     return response.data;
