@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { fetchUserBlogs } from "../../services/fetchUserBlogs";
 import UserBlogCard from "./UserBlogCard";
+// import axios from "axios";
+// import EditBlog from "../../pages/EditBlog";
+import { useNavigate } from "react-router-dom";
 
 const UserBlogs = () => {
+  const navigate = useNavigate();
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -25,8 +29,8 @@ const UserBlogs = () => {
     fetchUserData();
   }, []);
 
-  const handleEdit = (blogId) => {
-    console.log("edit blog with id : ", blogId);
+  const handleEdit = async (blogId) => {
+    navigate(`/edit/:${blogId}`);
   };
 
   const handleDelete = (blogId) => {

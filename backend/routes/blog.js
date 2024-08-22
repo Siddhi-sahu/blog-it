@@ -61,6 +61,22 @@ router.get("/bulk/blogs", authMiddleWare, async (req, res) => {
   }
 });
 
+//getting a single blog for editing
+
+router.get("/userblog/:id", authMiddleWare, async (req, res) => {
+  const blogId = req.params.id;
+
+  try {
+    const userBlog = await Blog.findById(blogId);
+    res.status(200).json({
+      blog: userBlog,
+    });
+  } catch (err) {
+    console.log("error: " + err);
+    return res.status(400).json({ msg: "something went wrong" });
+  }
+});
+
 //editing user blogs
 
 const updateBlogSchema = z.object({

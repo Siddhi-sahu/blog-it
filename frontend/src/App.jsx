@@ -9,6 +9,7 @@ import Redirect from "./pages/Redirect";
 import Explore from "./pages/Explore";
 import GatedRoutes from "./pages/GatedRoutes";
 import NewBlog from "./pages/NewBlog";
+import EditBlog from "./pages/EditBlog";
 
 function App() {
   return (
@@ -39,6 +40,14 @@ function App() {
             element={
               <GatedRoutes>
                 <NewBlog />
+              </GatedRoutes>
+            }
+          />
+          <Route
+            path={`edit/:blogId`}
+            element={
+              <GatedRoutes>
+                <EditBlog />
               </GatedRoutes>
             }
           />
