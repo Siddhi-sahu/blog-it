@@ -30,7 +30,7 @@ const UserBlogs = () => {
   }, []);
 
   const handleEdit = async (blogId) => {
-    navigate(`/edit/:${blogId}`);
+    navigate(`/edit/${blogId}`); //: was causing the trouble
   };
 
   const handleDelete = (blogId) => {

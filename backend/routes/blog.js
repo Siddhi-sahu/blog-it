@@ -72,7 +72,7 @@ router.get("/userblog/:id", authMiddleWare, async (req, res) => {
       blog: userBlog,
     });
   } catch (err) {
-    console.log("error: " + err);
+    console.log("error: ", err);
     return res.status(400).json({ msg: "something went wrong" });
   }
 });
