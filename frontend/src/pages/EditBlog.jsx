@@ -2,20 +2,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
-import InputBlog from "../components/InputBlog";
 
 const EditBlog = () => {
   const { blogId } = useParams();
   //{blogId : "23kfnsk34rj3"}
-  console.log(blogId);
-  //continue from here
+  // console.log(blogId);
 
   const [title, setTitle] = useState("");
 
   const [blog, setBlog] = useState("");
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     const getUserBlog = async () => {
       try {
         const response = await axios.get(
@@ -28,8 +26,8 @@ const EditBlog = () => {
         );
         const { title, blog } = response.data.blog;
 
-        console.log("Title:", title);
-        console.log("Blog:", blog);
+        // console.log("Title:", title);
+        // console.log("Blog:", blog);
 
         setTitle(title || ""); //undefined avoid krna hai isilye empty string
         setBlog(blog || "");
@@ -40,8 +38,18 @@ const EditBlog = () => {
     getUserBlog();
   }, [blogId]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    await axios.put(
+      `http://localhost:3000/api/v1/blog/update/blogs/${blogId}`,
+      { title, blog },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
   };
 
   return (
@@ -52,18 +60,18 @@ const EditBlog = () => {
           <form action="/" method="POST" onSubmit={handleSubmit}>
             <div className="flex justify-center items-center flex-col p-4 max-w-lg mx-auto lg:max-w-3xl 2xl:max-w-6xl font-mono">
               <input
-                // onChange={(e) => {
-                //   setTitle(e.target.value);
-                // }}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
                 defaultValue={title}
                 type="text"
                 className="w-full p-3 mb-4  rounded-lg  transform transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:bg-pink-200"
                 // placeholder="Blog title(50 characters)"
               />
               <textarea
-                // onChange={(e) => {
-                //   setBlog(e.target.value);
-                // }}
+                onChange={(e) => {
+                  setBlog(e.target.value);
+                }}
                 defaultValue={blog}
                 // placeholder=" Blog Content(5000 characters)"
                 className="w-full p-3 mb-4 h-96  rounded-lg resize-none transform transition-transform duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:bg-pink-200"
