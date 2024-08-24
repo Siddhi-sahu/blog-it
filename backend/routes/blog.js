@@ -100,7 +100,7 @@ router.put("/update/blogs/:id", authMiddleWare, async (req, res) => {
       {
         $set: req.body,
       },
-      { new: true }
+      { new: true } //send back so that we debugg
     );
 
     if (!result) {
@@ -113,6 +113,25 @@ router.put("/update/blogs/:id", authMiddleWare, async (req, res) => {
   } catch (err) {
     console.log("error: " + err);
     return res.status(400).json({ msg: "something went wrong" });
+  }
+});
+
+//deleting user blogs
+router.delete("/delete/:id", authMiddleWare, async (req, res) => {
+  const blogId = req.params.id;
+  try {
+    const deletedBlog = await Blog.findByIdAndDelete(blogId);
+    if (!deletedBlog) {
+      return res.status(404).json({ msg: "Blog not found" });
+    }
+    res.status(200).json({
+      msg: "blog deleted successfully",
+    });
+  } catch (err) {
+    console.log("error: " + err);
+    return res
+      .status(400)
+      .json({ msg: "something went wrong/could not delete" });
   }
 });
 

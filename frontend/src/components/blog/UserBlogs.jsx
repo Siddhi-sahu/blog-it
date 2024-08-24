@@ -4,6 +4,7 @@ import UserBlogCard from "./UserBlogCard";
 // import axios from "axios";
 // import EditBlog from "../../pages/EditBlog";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const UserBlogs = () => {
   const navigate = useNavigate();
@@ -33,8 +34,27 @@ const UserBlogs = () => {
     navigate(`/edit/${blogId}`); //: was causing the trouble
   };
 
-  const handleDelete = (blogId) => {
-    console.log("delete blog with id", blogId);
+  const handleDelete = async (blogId) => {
+    console.log(blogId);
+    const token = localStorage.getItem("token");
+    if (window.confirm("deletion cant be undone. continue?")) {
+      try {
+        console.log("delete blog with id", blogId);
+        await axios.delete(
+          `http://localhost:3000/api/v1/blog/delete/${blogId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        setBlogs(blogs.filter((blog) => blog._id !== blogId));
+      } catch (err) {
+        console.log("error while deletion: ", err);
+        alert("Cannot delete blog at the moment. Please try again later.");
+      }
+    }
   };
 
   if (loading) return <div>loading...</div>;
