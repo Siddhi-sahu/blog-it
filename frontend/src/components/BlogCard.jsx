@@ -1,7 +1,7 @@
 import React from "react";
 import profileIcon from "../assets/profile.svg";
 
-const BlogCard = ({ author, title, overview }) => {
+const BlogCard = ({ author, title, overview, onClick }) => {
   return (
     <div className="bg-pink-100 shadow-lg rounded-lg overflow-hidden max-w-md mx-auto mb-4 flex flex-col w-full h-72">
       <div className="p-4 flex-grow">
@@ -19,7 +19,10 @@ const BlogCard = ({ author, title, overview }) => {
         <p className="text-gray-600 ">{overview}</p>
       </div>
       <div className="bg-pink-300 p-4 mt-auto flex">
-        <button className="bg-pink-600 text-white py-2 px-4 rounded hover:bg-pink-700 ">
+        <button
+          onClick={onClick}
+          className="bg-pink-600 text-white py-2 px-4 rounded hover:bg-pink-700 "
+        >
           Read More
         </button>
       </div>

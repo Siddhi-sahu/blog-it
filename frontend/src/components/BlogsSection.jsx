@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import { fetchBlogs } from "../services/fetchBlogs";
+import { useNavigate } from "react-router-dom";
 
 const BlogsSection = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -34,6 +36,9 @@ const BlogsSection = () => {
           title={blog.title.toUpperCase()}
           author={blog.author}
           overview={blog.blog.substring(0, 150) + "   ......read more"}
+          onClick={() => {
+            navigate(`/readblog/${blog._id}`);
+          }}
         />
       ))}
     </div>

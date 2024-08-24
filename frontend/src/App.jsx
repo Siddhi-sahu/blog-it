@@ -10,6 +10,7 @@ import Explore from "./pages/Explore";
 import GatedRoutes from "./pages/GatedRoutes";
 import NewBlog from "./pages/NewBlog";
 import EditBlog from "./pages/EditBlog";
+import ReadBlog from "./pages/ReadBlog";
 
 function App() {
   return (
@@ -48,6 +49,14 @@ function App() {
             element={
               <GatedRoutes>
                 <EditBlog />
+              </GatedRoutes>
+            }
+          />
+          <Route
+            path={"/readblog/:blogId"}
+            element={
+              <GatedRoutes>
+                <ReadBlog />
               </GatedRoutes>
             }
           />
