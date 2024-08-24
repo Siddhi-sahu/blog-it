@@ -43,7 +43,7 @@ const InputBlog = () => {
   }
 
   return (
-    <form action="/createblog" method="POST" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div className="flex justify-center items-center flex-col p-4 max-w-lg mx-auto lg:max-w-3xl 2xl:max-w-6xl font-mono">
         {/* if there is a value of error has a value/error is true  */}
         {error && (
