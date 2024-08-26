@@ -61,7 +61,7 @@ router.get("/bulk/blogs", authMiddleWare, async (req, res) => {
   }
 });
 
-//getting a single blog for editing
+//getting a single blog for editing and for reAading
 
 router.get("/userblog/:id", authMiddleWare, async (req, res) => {
   const blogId = req.params.id;
