@@ -155,6 +155,26 @@ router.delete("/delete/:id", authMiddleWare, async (req, res) => {
       .json({ msg: "something went wrong/could not delete" });
   }
 });
+//search and get blogs
+
+router.get("/search", async (req, res) => {
+  //storing p in searchquery
+  const searchQuery = req.query.q || "";
+
+  try {
+    const results = await Blog.find({
+      $or: [
+        { title: { $regex: searchQuery, $options: "i" } },
+        { blog: { $regex: searchQuery, $options: "i" } },
+      ],
+    }).populate("author", "firstName lastName");
+
+    res.status(200).json({ blogs: results });
+  } catch (err) {
+    console.log("Error during search:", err);
+    res.status(500).json({ msg: "Failed to fetch search results" });
+  }
+});
 
 router.use(function (err, req, res, next) {
   res.send("global catch error : " + err);

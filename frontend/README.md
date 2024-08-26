@@ -9,4 +9,5 @@
 
 - updating blogs
 
+- add alert for logout
 - add upvotes/downvotes

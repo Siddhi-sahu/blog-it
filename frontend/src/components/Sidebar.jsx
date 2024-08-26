@@ -20,7 +20,7 @@ const Sidebar = () => {
               label={"Explore"}
               to={"/explore"}
             />
-            <DashboardLinks icon={searchIcon} label={"Search"} to={""} />
+            <DashboardLinks icon={searchIcon} label={"Search"} to={"/search"} />
             <DashboardLinks icon={profileIcon} label={"Profile"} to={""} />
           </div>
           {/* <div>

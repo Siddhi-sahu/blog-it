@@ -11,6 +11,7 @@ import GatedRoutes from "./pages/GatedRoutes";
 import NewBlog from "./pages/NewBlog";
 import EditBlog from "./pages/EditBlog";
 import ReadBlog from "./pages/ReadBlog";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -57,6 +58,14 @@ function App() {
             element={
               <GatedRoutes>
                 <ReadBlog />
+              </GatedRoutes>
+            }
+          />
+          <Route
+            path={"/search"}
+            element={
+              <GatedRoutes>
+                <Search />
               </GatedRoutes>
             }
           />
