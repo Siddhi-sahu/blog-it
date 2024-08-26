@@ -17,7 +17,7 @@ const ReadBlog = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:3000/api/v1/blog/userblog/${blogId}`,
+          `http://localhost:3000/api/v1/blog/readblog/${blogId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -37,7 +37,7 @@ const ReadBlog = () => {
     };
 
     getBlogData();
-  }, []);
+  }, [blogId]);
 
   if (loading) return <div>loading...</div>;
   if (error)
@@ -56,7 +56,12 @@ const ReadBlog = () => {
         )}
         <div className="max-w-3xl mx-auto bg-gray-100 p-6 rounded-lg shadow-lg">
           {<h1 className="text-3xl font-bold mb-4">{blog.title}</h1>}
-          <p className="text-sm text-gray-600 mb-8">By {blog.author}</p>
+          <p className="text-sm text-gray-600 mb-8">
+            By{" "}
+            {blog.author
+              ? blog.author.firstName + " " + blog.author.lastName
+              : "Unknown Author"}
+          </p>
           <div className="text-lg text-gray-800 leading-relaxed">
             {blog.blog}
           </div>

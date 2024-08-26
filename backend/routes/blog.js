@@ -60,8 +60,29 @@ router.get("/bulk/blogs", authMiddleWare, async (req, res) => {
     res.status(500).send({ message: "Failed to fetch blogs" });
   }
 });
+// getting a single blog  for reAading
 
-//getting a single blog for editing and for reAading
+router.get("/readblog/:id", authMiddleWare, async (req, res) => {
+  const blogId = req.params.id;
+
+  try {
+    const userBlog = await Blog.findById(blogId).populate({
+      path: "author",
+      select: "firstName lastName",
+    });
+    if (!userBlog) {
+      return res.status(404).json({ msg: "Blog not found" });
+    }
+    res.status(200).send({
+      blog: userBlog,
+    });
+  } catch (err) {
+    console.log("error: ", err);
+    return res.status(500).json({ msg: "failed to fetch blog" });
+  }
+});
+
+//getting a single blog for editing
 
 router.get("/userblog/:id", authMiddleWare, async (req, res) => {
   const blogId = req.params.id;
