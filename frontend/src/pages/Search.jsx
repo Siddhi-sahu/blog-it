@@ -37,11 +37,10 @@ const Search = () => {
       } finally {
         setLoading(false);
       }
-
-      const timeoutId = setTimeout(() => {
-        fetchResults();
-      }, [300]);
     };
+    const timeoutId = setTimeout(() => {
+      fetchResults();
+    }, 300);
 
     return () => {
       clearTimeout(timeoutId);
@@ -65,10 +64,7 @@ const Search = () => {
             onChange={handleInputChange}
             className="w-full md:w-2/3 p-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"
           />
-          <button
-            className="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-r-lg"
-            onClick={handleSearch}
-          >
+          <button className="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-r-lg">
             Search ideas
           </button>
 
@@ -86,7 +82,9 @@ const Search = () => {
                     <p>{blog.blog}</p>
                   </div>
                 ))
-              : !loading && <div>No Matching Results{":("}</div>}
+              : !loading && (
+                  <div className="block">No Matching Results{":("}</div>
+                )}
           </div>
         </div>
       </div>
