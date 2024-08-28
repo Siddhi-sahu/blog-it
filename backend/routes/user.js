@@ -196,4 +196,23 @@ router.post("/logout", (req, res) => {
   });
 });
 
+//profile route
+
+router.get("/profile", authMiddleWare, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select(
+      "firstName lastName username"
+    );
+
+    if (!user) {
+      return res.status(400).json({ msg: "user not found" });
+    }
+
+    res.status(200).json(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: "Failed to fetch user profile" });
+  }
+});
+
 export { router };
