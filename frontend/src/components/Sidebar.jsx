@@ -21,7 +21,11 @@ const Sidebar = () => {
               to={"/explore"}
             />
             <DashboardLinks icon={searchIcon} label={"Search"} to={"/search"} />
-            <DashboardLinks icon={profileIcon} label={"Profile"} to={""} />
+            <DashboardLinks
+              icon={profileIcon}
+              label={"Profile"}
+              to={"/profile"}
+            />
           </div>
           {/* <div>
             <img

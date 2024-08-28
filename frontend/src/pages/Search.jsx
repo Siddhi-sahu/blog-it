@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import axios from "axios";
-
+//improve styling
 const Search = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
@@ -63,9 +63,9 @@ const Search = () => {
               placeholder="Search for blog posts..."
               value={query}
               onChange={handleInputChange}
-              className="w-full md:w-2/3 p-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"
+              className="w-full md:w-2/3 p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"
             />
-            <button className="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-6 py-3 rounded-r-lg">
+            <button className="bg-pink-500 hover:bg-pink-600 text-white font-semibold px-5 py-2 m-2 rounded-lg">
               Search ideas
             </button>
           </div>
@@ -80,15 +80,17 @@ const Search = () => {
                     key={blog._id}
                     className="bg-white p-4 rounded-lg shadow mb-4"
                   >
-                    <h2>{blog.title}</h2>
-                    <p className="text-gray-600">
+                    <h2 className="font-semibold">
+                      {blog.title.toUpperCase()}
+                    </h2>
+                    <p className="text-pink-800">
                       By {blog.author.firstName} {blog.author.lastName}
                     </p>
                     <p className="text-gray-800">{blog.blog}</p>
                   </div>
                 ))
               : !loading && (
-                  <div className="text-center text-gray-600">
+                  <div className="text-left text-gray-600 m-4 text-xl">
                     No Matching Results{":("}
                   </div>
                 )}

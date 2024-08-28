@@ -12,6 +12,7 @@ import NewBlog from "./pages/NewBlog";
 import EditBlog from "./pages/EditBlog";
 import ReadBlog from "./pages/ReadBlog";
 import Search from "./pages/Search";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -66,6 +67,14 @@ function App() {
             element={
               <GatedRoutes>
                 <Search />
+              </GatedRoutes>
+            }
+          />
+          <Route
+            path={"/profile"}
+            element={
+              <GatedRoutes>
+                <Profile />
               </GatedRoutes>
             }
           />
