@@ -5,6 +5,7 @@ import UserBlogCard from "./UserBlogCard";
 // import EditBlog from "../../pages/EditBlog";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Loading from "../exta/Loading";
 
 const UserBlogs = () => {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ const UserBlogs = () => {
     }
   };
 
-  if (loading) return <div>loading...</div>;
+  if (loading) return <Loading />;
 
   if (error) {
     return <div>Error fetching your blogs, Error : {error}</div>;

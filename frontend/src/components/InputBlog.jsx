@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Success from "./exta/Success";
 
 const InputBlog = () => {
   const [title, setTitle] = useState("");
@@ -39,7 +40,7 @@ const InputBlog = () => {
   };
 
   if (success) {
-    return <div>Blog posted Successfully.</div>;
+    return <Success />;
   }
 
   return (

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import axios from "axios";
+import Loading from "../components/exta/Loading";
 //improve styling
 const Search = () => {
   const [query, setQuery] = useState("");
@@ -70,7 +71,7 @@ const Search = () => {
             </button>
           </div>
 
-          {loading && <div className="mt-8 text-center">loading...</div>}
+          {loading && <Loading />}
           {error && <p className="text-red-600 text-center mt-4">{error}</p>}
 
           <div className="mt-8 w-full md:w-2/3">

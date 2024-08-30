@@ -6,11 +6,14 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   const handlelogout = () => {
-    try {
-      localStorage.removeItem("token");
-      navigate("/signin");
-    } catch (err) {
-      console.log("error logging out ", err);
+    if (window.confirm("Continue logging out?")) {
+      try {
+        localStorage.removeItem("token");
+        navigate("/signin");
+      } catch (err) {
+        console.log("error logging out ", err);
+        alert("Cannot Logout at the moment. Please try again later.");
+      }
     }
   };
   return (

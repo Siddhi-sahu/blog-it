@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import Loading from "../components/exta/Loading";
 
 const EditBlog = () => {
   const { blogId } = useParams();
@@ -74,7 +75,7 @@ const EditBlog = () => {
   }, [success, navigate]);
 
   if (loading) {
-    return <div>loading....</div>;
+    return <Loading />;
   }
   return (
     <>

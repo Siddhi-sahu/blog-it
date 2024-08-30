@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import axios from "axios";
 import profileIcon from "../assets/profile.svg";
+import Loading from "../components/exta/Loading";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -36,7 +37,7 @@ const Profile = () => {
       <Sidebar />
       <div className="col-span-4 md:col-span-10 bg-pink-100 p-6 overflow-y-auto">
         {loading ? (
-          <div className="text-center text-lg">Loading...</div>
+          <Loading />
         ) : error ? (
           <div className="text-red-500 text-center font-bold text-2xl">
             {error}
