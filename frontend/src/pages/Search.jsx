@@ -3,12 +3,16 @@ import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import Loading from "../components/exta/Loading";
+import SearchBlog from "../components/blog/SearchBlog";
+import { useNavigate } from "react-router-dom";
 //improve styling
 const Search = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -52,6 +56,12 @@ const Search = () => {
     setQuery(e.target.value);
   };
 
+  ///readblog/:blogId"
+
+  const handleClick = (blogId) => {
+    navigate(`/readblog/${blogId}`);
+  };
+
   return (
     <div className="grid grid-cols-5 md:grid-cols-12 h-screen">
       <Sidebar />
@@ -77,18 +87,11 @@ const Search = () => {
           <div className="mt-8 w-full md:w-2/3">
             {results.length > 0
               ? results.map((blog) => (
-                  <div
+                  <SearchBlog
+                    blog={blog}
                     key={blog._id}
-                    className="bg-white p-4 rounded-lg shadow mb-4"
-                  >
-                    <h2 className="font-semibold">
-                      {blog.title.toUpperCase()}
-                    </h2>
-                    <p className="text-pink-800">
-                      By {blog.author.firstName} {blog.author.lastName}
-                    </p>
-                    <p className="text-gray-800">{blog.blog}</p>
-                  </div>
+                    onClick={() => handleClick(blog._id)}
+                  />
                 ))
               : !loading && (
                   <div className="text-left text-gray-600 m-4 text-xl">
