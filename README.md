@@ -10,7 +10,7 @@ BlogIt is a full-stack blogging platform . It features a user-friendly interface
 
 ### signin/signup Page
 
-![Landing Page](src/assets/screenshots/signin.png)
+![Landing Page](frontend/src/assets/screenshots/signin.png)
 
 ## Features
 
