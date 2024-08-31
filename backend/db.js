@@ -1,8 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-mongoose.connect(
-  "mongodb+srv://himani:fSKP1zLzZqXtMshG@cluster0.ujlkouj.mongodb.net/BlogitDB"
-);
+mongoose.connect("");
 
 const userSchema = new Schema({
   username: {
