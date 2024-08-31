@@ -11,14 +11,14 @@ BlogIt is a full-stack blogging platform . It features a user-friendly interface
 ### signin/signup Page
 
 <img src="frontend/src/assets/screenshots/signin.png" alt="Signin/Signup Page" width="300" height="300"/>
-<img src="frontend/src/assets/screenshots/dashboard.png" alt="Signin/Signup Page" width="300" height="300"/>
-<img src="frontend/src/assets/screenshots/explore.png" alt="Signin/Signup Page" width="300" height="300"/>
+<img src="frontend/src/assets/screenshots/dashboard.png" alt="dashboard Page" width="500" height="300"/>
+<img src="frontend/src/assets/screenshots/explore.png" alt="explore Page" width="300" height="300"/>
 
-<img src="frontend/src/assets/screenshots/read.png" alt="Signin/Signup Page" width="300" height="300"/>
-<img src="frontend/src/assets/screenshots/post.png" alt="Signin/Signup Page" width="300" height="300"/>
+<img src="frontend/src/assets/screenshots/read.png" alt="readMore Page" width="300" height="300"/>
+<img src="frontend/src/assets/screenshots/post.png" alt="newPost Page" width="300" height="300"/>
 
-<img src="frontend/src/assets/screenshots/success.png" alt="Signin/Signup Page" width="300" height="300"/>
-<img src="frontend/src/assets/screenshots/search.png" alt="Signin/Signup Page" width="300" height="300"/>
+<img src="frontend/src/assets/screenshots/success.png" alt="Success Page" width="300" height="300"/>
+<img src="frontend/src/assets/screenshots/search.png" alt="Search Page" width="300" height="300"/>
 
 ## Features
 
@@ -44,6 +44,6 @@ BlogIt is a full-stack blogging platform . It features a user-friendly interface
 
 ## Connect
 
-Follow the project on X for updates and more:
+Check out my project video on X.com for a quick overview:
 
-[x.com](https://x.com/HimaniSahu67644)
+[Watch the video on X](https://x.com/HimaniSahu67644/status/1829530551507943448)
